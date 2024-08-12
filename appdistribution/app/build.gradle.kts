@@ -14,7 +14,6 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
         multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -25,21 +24,23 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
         jvmTarget = "17"
     }
+
     buildFeatures {
         viewBinding = true
     }
+
     lint {
         warning.add("InvalidPackage")
-        // TODO(thatfiredev): Remove this once
-        //  https://github.com/bumptech/glide/issues/4940 is fixed
-        //  (and the same change gets applied to App Distribution)
+        // TODO: Remove this once the issue with Glide is fixed
         disable.add("NotificationPermission")
     }
 }
@@ -52,16 +53,16 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.multidex:multidex:2.0.1")
 
-    // Import the Firebase BoM (see: https://firebase.google.com/docs/android/learn-more#bom)
+    // Import the Firebase BoM (Bill of Materials)
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
 
-    // ADD the SDK to the "prerelease" variant only (example)
+    // Firebase App Distribution SDK
     implementation("com.google.firebase:firebase-appdistribution:16.0.0-beta13")
 
-    // For an optimal experience using App Distribution, add the Firebase SDK
-    // for Google Analytics. This is recommended, but not required.
+    // Firebase Analytics SDK (recommended but optional)
     implementation("com.google.firebase:firebase-analytics")
 
+    // Additional testing dependencies
     androidTestImplementation("androidx.test:runner:1.6.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
     androidTestImplementation("androidx.test:rules:1.6.1")

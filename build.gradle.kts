@@ -11,6 +11,16 @@ plugins {
     id("com.github.ben-manes.versions") version "0.51.0" apply true
 }
 
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.google.gms:google-services:4.4.2") // Certifique-se de que este plugin esteja incluído
+    }
+}
+
 allprojects {
     repositories {
         google()
